@@ -252,6 +252,9 @@ message = client.messages \
                  )
 
 print(message.sid)
+
+#위와같이 했으나 아래와 같이 ModuleNotFoundError와 KeyError가 뜸
+//ModuleNotFoundError
 #Traceback (most recent call last):
 #   File "/opt/virtualenvs/python3/lib/python3.8/site-packages/twilio/rest/resources/imports.py", line 3, in <module>
 #     from urlparse import parse_qs
@@ -301,9 +304,51 @@ print(message.sid)
 # ImportError: cannot import name '__version__' from 'twilio' (unknown location)
 #  
 #위 내용이 프린트되면 문자가 발송안된것..
-#왜 안되는지 이유아시는분 ㅠㅠ
+//KeyError
+#wilio: raise KeyError(key) from None
+# Traceback (most recent call last):
+#   File "main.py", line 8, in <module>
+#     account_sid = os.environ['TWILIO_ACCOUNT_SID'] #우리가 가져온 값으로 바꿔줘야됨
+#   File "/usr/lib/python3.8/os.py", line 675, in __getitem__
+#     raise KeyError(key) from None
+# KeyError: 'TWILIO_ACCOUNT_SID'
+
+그래서 아래와 같이 수정함
+
+# Download the helper library from https://www.twilio.com/docs/python/install
+from twilio.rest import Client
 
 
+# Your Account Sid and Auth Token from twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+account_sid ='ACeaa4794455b9f751fbacdce13a20c650'
+auth_token ='4a0ec15d2661e5775d6018f5a35d0a83'
+client = Client(account_sid, auth_token)
+
+message = client.messages \
+                .create(
+                     body="자니?(feat.ex-BF)",
+                     from_='+15017122661',
+                     to='+821012341234'
+                 )
+
+print(message.sid)
+
+#근데 만약 처음에 twilio 가입할때 인증(verified)했던 번호외에 다른 번호로 메세지 보내고 싶으면 아래와 같이 또 에러 발생
+#스팸방지를 위해그런거라고 하니 참고하길 바람:)
+#다른번호도 인증하거나 미인증번호에도 메세지 보낼 수 있는 twilio 신규번호를 구매할것.
+twilio.base.exceptions.TwilioRestException: 
+HTTP Error Your request was:
+
+POST /Accounts/ACeaa4794455b9f751fbacdce13a20c650/Messages.json
+
+Twilio returned the following information:
+
+Unable to create record: The number  is unverified. Trial accounts cannot send messages to unverified numbers; verify  at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers.
+
+More information may be available here:
+
+https://www.twilio.com/docs/errors/21608
 
 
 
