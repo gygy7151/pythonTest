@@ -42,17 +42,116 @@ def solution(n, m, x, y, d):
         gameboard[i] = list(map(int, input().split()))
 
     # 현재 위치에서 서쪽 위치좌표랑 비교
-    # 서쪽위치좌표 디폴트값
-
+    # 현재위치좌표 디폴트값
     dx, dy = x, y
 
-    # 서쪽 위치 좌표가 이미 가본 칸이 아니면 해당 칸으로 이동한다
+
+    # 비교위치좌표 디폴트값
+    cx, cy = x, y
     
+    # 현재위치 
+    ds = d
 
-    # 서쪽 위치 좌표가 이미 가본칸이면 방향만 바꾸고 해당칸으로 이동하지 않는다.
+    # 방문한 위치 저장리스트
+    visitedList = []
 
-    # 서쪽 위치 좌표가 바다이면 방향만 바꾸고 이동하지 않는다.
+    # 방향 리스트
+    dir = {'0' : [-1, 0], '1' : [0, 1], '2' : [1, 0], '3': [0, -1]}
+    
+    # 방향이동 카운트
+    dcount = 0
+
+    # 캐릭터이동 카운트
+    mcount = 0
+
+    # 캐릭터이동은 count가 4보다 작을때까지만
+
+    while dcount < 4 :
+
+        try :
+
+            # 만약 현재 위치가 북쪽이면? 서쪽으로 방향이동
+            if ds == 0 :
+        
+            #방향 업데이트
+                ds = 3
+        
+            #비교위치 업데이트
+                #cx, cy += dir['3'][0], dir['3'][1]
+
+            # count 추가
+                dcount += 1
+
+            # 만약 현재 위치가 서쪽이면? 남쪽으로 방햐이동
+
+            elif ds == 3 :
+
+            #방향 업데이트
+                ds = 2
+        
+            #비교위치 업데이트
+                #cx, cy += dir['2'][0], dir['2'][1]
+
+            # count 추가
+                dcount += 1
 
 
+            # 만약 현재 위치가 남쪽이면? 동쪽으로 이동
+            elif ds == 2 :
 
-solution(n,m,x,y,d)
+            #방향 업데이트
+                ds = 1
+        
+            #비교위치 업데이트
+                #cx, cy += dir['1'][0], dir['1'][1]
+            
+            # count 추가
+                dcount += 1
+ 
+
+            # 만약 현재 위치가 동쪽이면?
+
+            elif ds == 1 :
+
+            #방향 업데이트
+                ds = 0
+        
+            #비교위치 업데이트
+                #cx, cy += dir['0'][0], dir['0'][1]
+
+            # count 추가
+                dcount += 1
+
+            else :
+                pass
+            
+        # 방문한적 있으면 이동하지 않는다.
+            if visitedList.index((cx, cy)) :
+            
+                print('이미 방문한 칸입니다.')
+
+            
+        # 바다면 이동하지 않는다.
+            elif gameboard[cx][cy] == (1, 1) :
+                print('바다입니다')
+
+        except ValueError :
+        # 방문한적 없으면 이동한다
+
+        # 방문한 좌표를 visitedList에 추가한다.
+            visitedList.append((cx,cy))
+
+        # 현재 위치를 업데이트한다.(비교위치를 현재위치에 대입)
+            dx, dy = cx, cy
+        
+        # 캐릭터 이동 카운트 추가
+            mcount += 1
+
+            print('이동완료')
+
+    return mcount
+
+if __name__ == '__main__' : 
+
+    count = solution(n,m,x,y,d)
+    print('캐릭터가 방문한 최종 칸의 수는 %d입니다' %count)
