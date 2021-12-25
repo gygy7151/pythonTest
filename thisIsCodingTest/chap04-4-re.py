@@ -61,88 +61,107 @@ def solution(n, m, x, y, d):
     # 방향이동 카운트
     dcount = 0
 
-    # 캐릭터이동 카운트
-    mcount = 0
+    # 캐릭터이동 카운트(기본디폴트는 1임)
+    mcount = 1
 
     # 캐릭터이동은 count가 4보다 작을때까지만
 
-    while dcount < 4 :
+    while dcount < 5 :
 
         try :
 
+            cx, cy = dx, dy
+
             # 만약 현재 위치가 북쪽이면? 서쪽으로 방향이동
             if ds == 0 :
+                print('현재방향 북쪽')
         
             #방향 업데이트
                 ds = 3
         
             #비교위치 업데이트
-                #cx, cy += dir['3'][0], dir['3'][1]
+                cx += dir['3'][0]
+                cy += dir['3'][1]
+                print('비교위치 업데이트완료',cx, cy)
 
             # count 추가
                 dcount += 1
+                print('서쪽 이동')
 
             # 만약 현재 위치가 서쪽이면? 남쪽으로 방햐이동
 
             elif ds == 3 :
-
+                print('현재방향 서쪽')
             #방향 업데이트
                 ds = 2
         
             #비교위치 업데이트
-                #cx, cy += dir['2'][0], dir['2'][1]
-
+                cx += dir['2'][0]
+                cy += dir['2'][1]
+                print('비교위치 업데이트완료',cx, cy)
             # count 추가
                 dcount += 1
-
+                print('남쪽 이동')
 
             # 만약 현재 위치가 남쪽이면? 동쪽으로 이동
             elif ds == 2 :
+                print('현재방향 남쪽')
 
             #방향 업데이트
                 ds = 1
         
             #비교위치 업데이트
-                #cx, cy += dir['1'][0], dir['1'][1]
-            
+                cx += dir['1'][0]
+                cy += dir['1'][1]
+                print('비교위치 업데이트완료',cx, cy)                
+
             # count 추가
                 dcount += 1
- 
+                print('동쪽 이동')
 
             # 만약 현재 위치가 동쪽이면?
 
             elif ds == 1 :
-
+                print('현재방향 동쪽')
             #방향 업데이트
                 ds = 0
         
             #비교위치 업데이트
-                #cx, cy += dir['0'][0], dir['0'][1]
+                cx += dir['0'][0]
+                cy += dir['0'][1]
+                print('비교위치 업데이트완료',cx, cy)
 
             # count 추가
                 dcount += 1
+                print('북쪽 이동')
 
             else :
                 pass
-            
-        # 방문한적 있으면 이동하지 않는다.
-            if visitedList.index((cx, cy)) :
-            
-                print('이미 방문한 칸입니다.')
 
             
-        # 바다면 이동하지 않는다.
-            elif gameboard[cx][cy] == (1, 1) :
+        # 바다면 이동하지 않는다. 또는 행렬값이 out of range이면 이동하지 않는다인데 그전에 
+        #사면 테두리를 1로 메꿔버려서 필요없긴 함
+            if gameboard[cx][cy] == 1 :
                 print('바다입니다')
+            
+        # 방문한적 있으면 이동하지 않는다.
+            elif visitedList.index((cx, cy)) :
+            
+                print('이미 방문한 칸입니다.')
 
         except ValueError :
         # 방문한적 없으면 이동한다
 
+        # dcount는 초기화한다
+            dcount = 0
+
         # 방문한 좌표를 visitedList에 추가한다.
             visitedList.append((cx,cy))
+            print('현재 방문한 위치 {}'.format(visitedList))
 
         # 현재 위치를 업데이트한다.(비교위치를 현재위치에 대입)
             dx, dy = cx, cy
+            print('현재 캐릭터 위치는 (%d, %d)입니다.' %(dx, dy))
         
         # 캐릭터 이동 카운트 추가
             mcount += 1
