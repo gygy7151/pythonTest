@@ -7,7 +7,7 @@ def bfs(graph, start, visited) :
 
     visited[start] = True
 
-    #큐가 비어있지 않다면 반복실행
+    #큐가 비어있지 않다면
     while queue :
 
         v = queue.popleft()
