@@ -2,45 +2,54 @@
 simple customer support ticketing
 '''
 
-open = ['{', '[', '(']
-set = { '}' : '{', ']' : '[', ')' : '(' }
+set = {'{': '}', '[': ']', '(' : ')'}
 
 # Complete the braces function below.
 def braces(values):
     
     strs = values
+    arr = []
+    option = False
+
     
     for i in range(len(values)):
       
         strs[i] = list(map(str, values[i]))
 
+
     for i in range(len(strs)) :
-      
+
         for j in range(len(strs[i])) :
-            
 
-            if strs[i][j] == '{' or strs[i][j] == '[' or values[i][j] == '(':
-                print('지나간다')
-                pass
-            
-            else :
-                if strs[i][j-1] == set[strs[i][j]] :
-                    print('같다')
-                    pass
+            if strs[i][j] == '(' :
 
-                    if j == len(strs[i]) - 1 :
-                        print('YES')
+                arr.append(')')
 
-                elif strs[i][j-1] != set[strs[i][j]] :
-                    
+            elif strs[i][j] == '[' :
+
+                arr.append(']')
+
+            elif strs[i][j] == '{' :
+
+                arr.append('}')
+
+            else:
+
+                if arr[len(arr) - 1] != strs[i][j]:
+                    option = False
                     print('NO')
-                    
                     break
                 
                 
-                    
+                if arr[len(arr) - 1 ] == strs[i][j]:
+                    option = True
+                    arr.pop()
+        
+        if option == True :
+            print('YES')
 
-    
+
+                
                     
             
     
