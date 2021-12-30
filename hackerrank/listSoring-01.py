@@ -1,37 +1,44 @@
 '''
-simple custommer support ticketing
+simple customer support ticketing
 '''
 
 open = ['{', '[', '(']
-set = { '}' : '{', ']' : ']', ')' : '(' }
+set = { '}' : '{', ']' : '[', ')' : '(' }
 
 # Complete the braces function below.
 def braces(values):
     
     strs = values
-    print(strs)
     
     for i in range(len(values)):
+      
         strs[i] = list(map(str, values[i]))
-    
-    
+
     for i in range(len(strs)) :
+      
         for j in range(len(strs[i])) :
-            print(strs[i][j])
-            if strs[i][j] == '{' or strs[i][j] == '[' or strs[i][j] == '(':
+            
+
+            if strs[i][j] == '{' or strs[i][j] == '[' or values[i][j] == '(':
+                print('지나간다')
                 pass
             
             else :
-                try :
-                    print(set[strs[i][j]])
-                    print(strs[i][j-1])
-                    if set[strs[i][j]] == strs[i][j-1] :
+                if strs[i][j-1] == set[strs[i][j]] :
+                    print('같다')
+                    pass
+
+                    if j == len(strs[i]) - 1 :
                         print('YES')
-                        strs[i][j] = strs[i][j-2]
+
+                elif strs[i][j-1] != set[strs[i][j]] :
                     
-                except ValueError:
                     print('NO')
-                    strs[i][j] = strs[i][j-2]
+                    
+                    break
+                
+                
+                    
 
     
                     
@@ -49,6 +56,8 @@ if __name__ == '__main__':
         values.append(values_item)
         
     braces(values)
+
+
 
     
 
