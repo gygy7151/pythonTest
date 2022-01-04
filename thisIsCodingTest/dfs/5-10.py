@@ -21,50 +21,47 @@ N * M 크기 얼음틀이 있다.
 
 n, m = map(int, input().split())
 
-# 2차원 리스트의 맵 정보 입력받기
-graph = []
-for _ in range(n) :
-    graph.append(list(map(int, input())))
+graph = [[] * m for i in range(n)]
 
-# dfs로 특정한 노드를 방문한 뒤에 연결된 모든 노드들도 방문
-def dfs(x, y) :
-    print('graph[{}][{}]노드 dfs 실행'.format(x,y))
-     # 주어진 범위를 벗어나는 경우에는 즉시 종료
-    if x <= -1 or x >= n or y <= -1 or y >= m :
-        return False
-    
-    # 현재 노드를 아직 방문하지 않았다면
-    if graph[x][y] == 0:
-        
-        # 해당노드 방문처리
-        graph[x][y] = 1
-        print('graph[{}][{}]노드 방문완료'.format(x,y))
+for i in range(n) :
 
-        # 상, 좌, 하, 우 = 북 서 남 동 (반시계방향)의 위치도 모두 재귀적으로 호출
-        dfs(x - 1, y) # 상
-        dfs(x, y -1) # 좌
-        dfs(x + 1, y) # 하
-        dfs(x, y + 1) # 우
-        return True
-    print('graph[{}][{}]노드 dfs 종료'.format(x,y))
-    return False
-        
-# 모든 노드(위치)에 대하여 음료수 채우기
+    graph[i] = list(map(int, input()))
+
+visited = [[False] * n for _ in range(m)]
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
 result = 0
-for i in range(n):
-    print(i,'행')
-    for j in range(m):
-        print('{}열 노드 조건문 점검'.format(j))
-        if dfs(i, j) == True:
-            
-            result += 1
-            print('result + 1 추가')
-            print('({},{}) 노드 종료'.format(i,j))
-            print('-----------------------------')
 
+
+def dfs(x, y) :
+
+    if x <= -1 or y <= -1 or x >= n or y >= m :
+        return 1
+
+    if graph[x][y] == 0 :
+
+        graph[x][y] =  1
+
+        for i in range(4) :
+
+            nx = x + dx[i]
+            ny = y + dy[i]
+            
+            dfs(nx, ny)
+
+        return 0
+    return 1
+
+
+for i in range(n) :
+
+    for j in range(m) :
+
+        if dfs(i, j) == 0 :
+
+            result += 1
+            
 
 print(result)
-
-
-      
-
