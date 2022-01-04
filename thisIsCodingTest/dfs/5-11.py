@@ -22,7 +22,6 @@ graph = []
 for _ in range(n) :
     graph.append(list(map(int, input())))
 
-# 이미 방문한 곳은 0으로 바꿈
 # 1이면 해당좌표값에 +1하여 최단거리를 기록한다
 
 #이동방향 정의(상, 하, 좌, 우)
