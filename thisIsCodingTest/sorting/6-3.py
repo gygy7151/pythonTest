@@ -1,5 +1,27 @@
-# 0 인덱스와 1 인덱스의 원소 교체하기
-array  = [3, 5]
-array[0], array[1] = array[1], array[0]
+'''
+삽입정렬
+'''
+array = [7, 8, 9, 0, 3, 1, 6, 2, 4]
 
-print(array)
+
+def insertionSorting() :
+
+    for i in range(len(array)) :
+
+        pivot = array[i] 
+
+        for j in range(i + 1, len(array)) :
+
+            if pivot < array[j] :
+
+                
+
+
+            
+
+
+
+
+
+
+        
