@@ -1,20 +1,29 @@
 '''
 삽입정렬
 '''
-array = [7, 8, 9, 0, 3, 1, 6, 2, 4]
+array = [7, 5, 9, 0, 3, 1, 6, 2, 4]
 
 
 def insertionSorting() :
 
-    for i in range(len(array)) :
+    for i in range(1, len(array)) :
 
-        pivot = array[i] 
+        for j in range(i, 0, -1) :
+            
+            print(j)
 
-        for j in range(i + 1, len(array)) :
+            if array[j] < array[j-1] :
 
-            if pivot < array[j] :
+                array[j], array[j-1] = array[j-1], array[j]
+    
+    print(array)
+            
+insertionSorting()
 
-                
+
+
+
+
 
 
             
