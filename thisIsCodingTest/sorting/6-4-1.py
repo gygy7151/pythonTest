@@ -1,8 +1,9 @@
 '''
-퀵정렬이란?
+호어 퀵정렬
 '''
-
-# 0 인덱스와 1 인덱스의 원소 교체하기
 array  = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
 
-def quick_sort() :
+def quick_sort(array, start, end):
+    if start >= end :
+        return
+    
