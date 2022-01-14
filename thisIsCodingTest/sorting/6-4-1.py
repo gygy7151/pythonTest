@@ -3,10 +3,10 @@
 
 사고관점 : 인덱스는 변하지 않고, 인덱스 요소값만 변화한다.
 '''
-array  = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
+array  = [0, 5, 9, 7, 3, 1, 6, 2, 4, 8]
 
 def quick_sort(array, start, end):
-    if start >= end :
+    if end <= start :
         return
 
     pivot = start
