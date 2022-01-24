@@ -4,6 +4,7 @@ num = 11
 while True :
     #진접에 따른 변수를 선언
     num_10 = str(num)
+    #num_8과 num_2는 str임 int아님
     num_8 = oct(num).replace("0o", "")
     num_2 = bin(num).replace("0b", "")
 
@@ -16,4 +17,3 @@ while True :
     
     #홀수만 탐색하므로 2씩 늘림
     num += 2
-    
