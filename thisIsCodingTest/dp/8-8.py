@@ -22,10 +22,7 @@ res[1] = (m // coins[1])
 
 for i in range(2, n+1):
 
-    if m % coins[i] == 0 :
-
-        res[i], res[i-1] = min((m // coins[i]), res[i-1]), res[i]
-
+    res[i], res[i-1] = min((m // coins[i]), res[i-1]), res[i]
 
 if res[n] == 0 :
 
