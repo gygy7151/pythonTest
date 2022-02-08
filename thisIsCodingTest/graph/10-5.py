@@ -14,47 +14,43 @@ n개의 강의정보가 주어졌을대 n개의 강의에 대하여
 from collections import deque
 import copy
 
-v = int(input())
-#모든노드에 대한 집입차수는 0으로초기화
+v = int(input)
+
 indegree = [0] * (v+1)
-#각 강의시간도 0으로 초기화
+graph = [[] for _ in range(v+1)]
 time = [0] * (v+1)
 
-#각노드에 연결된 간선 정보를 담기 위한 연결리스트 그래프 초기화
-graph = [[] for i in range(v+1)]
-
-for i in range(1, v+1):
+for i in range(v+1):
     data = list(map(int, input().split()))
     time[i] = data[0]
+
     for x in data[1:-1]:
         indegree[i] += 1
-        #진입차수노드의 연결된 노드i를 추가함
+        #진입차수노드에연결된 현재i노드를 추가한다.
         graph[x].append(i)
 
-def topology_sort():
-    #deepcopy()함수를 이용하여 time리스트의 변수값을 복사해 result 리스트 변수값으로 설정한다.
+def topology():
     result = copy.deepcopy(time)
     q = deque()
 
-    #처음시작할때 진입차수가 0인 노드를 큐에 삽입
     for i in range(1, v+1):
         if indegree[i] == 0:
             q.append(i)
-
+    
     while q:
-        
         now = q.popleft()
 
-        #해당 원소와 연결된 노드들의 진입차수에 1빼기
-        for i in graph[now]:
-            result[i] = max(result[i], result[now] +  time[i])
-            indegree[i] -= 1
-            #새롭게 진입차수가 0이되는 노드를 큐에 삽입
-            if indegree[i] == 0:
-                q.append(i)
+        for j in graph[now]:
+            #현재노드번째 강의를 수강하기까지 최소 총걸린시간은 업데이트해줌(여기문제에선 최소라표현하지만 결국최대시간임 30+20이아니라 동시적인거임)
+            result[j] = max(result[j], result[now]+time[j])
+            indegree[j] -= 1
 
+            if indegree[j] == 0:
+                q.append(j)
+    
     for i in range(1, v+1):
-        print(result[i])
+        print(result[i], end = ' ')
+    
 
+topology()
 
-topology_sort()

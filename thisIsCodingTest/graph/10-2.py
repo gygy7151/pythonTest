@@ -12,6 +12,7 @@ graph = [[] for _ in range(v+1)]
 
 for i in range(e):
     a, b = map(int, input().split())
+    #연결된 노드를 추가
     graph[a].append(b)
     indegree[b] += 1
 
@@ -25,8 +26,10 @@ def topology_sort():
     
     while q:
         now = q.popleft()
+        #방문하는 노드를 result에추가
         result.append(now)
 
+        #인접한노드들의 진입차수에서 -1해줌으로써 연결된간선을 제거
         for j in graph[now]:
             indegree[j] -= 1
 
