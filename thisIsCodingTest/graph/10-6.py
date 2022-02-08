@@ -2,8 +2,8 @@
 여행계획 - MST서로소집합자료구조
 '''
 v, e = map(int, input().split())
-graph = [] * (v+1)
-#parent = [] * (v+1)하면안됨!! [,,,...,] len(parent) = 1이되는 리스트하나만 존재하게됨 
+#graph쓸일이 없음
+#parent = [] * (v+1)하면안됨!! [,,,...,] len(parent) = 1이되는 리스트하나만 존재하게됨 반드시 리스트로 감싸줘야됨
 parent = [[] for _ in range(v+1)]
 
 
