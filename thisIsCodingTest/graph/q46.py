@@ -26,18 +26,19 @@ IMPOSSIBLE을 출력함
 import sys
 import copy
 input = sys.stdin.readline
-cases = int(input())
+nums = int(input())
 grade = []
 result = ''
 
 def arrange_rank(cases):
-    for i in range(0,cases):
+    for i in range(cases):
         team_num = int(input())
         grade.append(list(map(int, input().split())))
         origin = copy.deepcopy(grade)
         m = int(input())
         if m == 0:
-            print(grade[i])
+            result = grade[i]
+            print(result)
             continue
         else :
             for _ in range(m):
@@ -52,9 +53,9 @@ def arrange_rank(cases):
             if origin[i] == grade[i]:
                 result = 'IMPOSSIBLE'
     
-    print(result)
+        print(result)
 
-arrange_rank(cases)
+arrange_rank(nums)
 
 
 
