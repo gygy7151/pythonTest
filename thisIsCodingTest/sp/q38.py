@@ -15,33 +15,65 @@ n명의 성적은 모두 다름 = 가중치가 다름x 가중치가아니고 걍
 m개의 각 줄에는 두 학생의 성적을 비교한 결과를 나타내는 양의정수 a,b가 주어짐
 '''
 import sys
-
+input = sys.stdin.readline
+INF = int(1e9)
 n, m = map(int, input().split())
-INF = 1001
 graph = [[INF] * (n+1) for _ in range(n+1)]
 
-for a in range(1, n+1):
-    for b in range(1, n+1):
-        if a == b:
-            graph[a][b] = 0
+for i in range(1, n+1):
+    graph[i][i] = 0
 
-for _ in range(m):
+for i in range(m):
     a, b = map(int, input().split())
     graph[a][b] = 1
 
-for k in range(1, n+1):
-    for a in range(1, n+1):
-        for b in range(1, n+1):
-            graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        for k in range(1, n+1):
+            graph[j][k] = min(graph[j][k], graph[j][i]+graph[i][k])
 
 result = 0
 for i in range(1, n+1):
     count = 0
     for j in range(1, n+1):
-        # a->b / b->a 경로 존재하는지 동시에 체크하는 방법!
+        #minimum one link
         if graph[i][j] != INF or graph[j][i] != INF:
             count += 1
-    if count == n:
+
+    if count == n :
         result += 1
 
 print(result)
+    
+# import sys
+
+# n, m = map(int, input().split())
+# INF = 1001
+# graph = [[INF] * (n+1) for _ in range(n+1)]
+
+# for a in range(1, n+1):
+#     for b in range(1, n+1):
+#         if a == b:
+#             graph[a][b] = 0
+
+# for _ in range(m):
+#     a, b = map(int, input().split())
+#     graph[a][b] = 1
+#     #graph[b][a]= 1은 하면안됨
+
+# for k in range(1, n+1):
+#     for a in range(1, n+1):
+#         for b in range(1, n+1):
+#             graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
+
+# result = 0
+# for i in range(1, n+1):
+#     count = 0
+#     for j in range(1, n+1):
+#         # a->b / b->a 경로 존재하는지 동시에 체크하는 방법!
+#         if graph[i][j] != INF or graph[j][i] != INF:
+#             count += 1
+#     if count == n:
+#         result += 1
+
+# print(result)
