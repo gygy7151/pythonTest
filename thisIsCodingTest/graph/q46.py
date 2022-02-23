@@ -6,7 +6,7 @@
 작년에 팀 13이 6보다 순위가 높았는데
 올해는 팀 6이 13보다 순위가 높으면 (6, 13)을
 발표할것임
-이 정보만으로 올해 최종순위를 만들어보고자함 (ㅋㅋ뭐냐결국 1등이중요허네)
+이 정보만으로 올해 최종순위를 만들어보고자함
 작년순위와 상대적인 순위가 바뀐 모든 팀의 목록이 주어졌을때 
 올해 순위를 만드는 프로그램을 만들어라
 근데, 올해순위를 만들수 없는경우도 있을 수 있고
@@ -38,7 +38,7 @@ def arrange_rank(cases):
         m = int(input())
         if m == 0:
             result = grade[i]
-            print(result)
+            print(*result)
             continue
         else :
             for _ in range(m):
@@ -51,9 +51,11 @@ def arrange_rank(cases):
                 elif grade[i].index(a) == grade[i].index(b):
                     result = '?'
             if origin[i] == grade[i]:
-                result = 'IMPOSSIBLE'
+                print('IMPOSSIBLE')
+                return
+                # result = 'IMPOSSIBLE'
     
-        print(result)
+        print(*result)
 
 arrange_rank(nums)
 
