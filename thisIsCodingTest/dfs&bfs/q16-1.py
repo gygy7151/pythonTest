@@ -1,5 +1,5 @@
 '''
-연구소
+연구소 -> pypy3로 돌릴시 3216ms로 통과됨
 '''
 n, m = map(int, input().split())
 data = []
