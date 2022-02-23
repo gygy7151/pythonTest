@@ -1,5 +1,5 @@
 '''
-경쟁적전염 - bfs
+경쟁적전염 - bfs, heapq사용
 '''
 import heapq
 import copy

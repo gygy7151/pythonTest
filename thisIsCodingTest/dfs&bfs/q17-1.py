@@ -1,49 +1,44 @@
 '''
 경쟁적전염 - bfs, q 사용
 '''
-import queue
-import sys
 from collections import deque
-input = sys.stdin.readline
-n, k = map(int, input().split())
+N, K = map(int, input().split())
 graph = []
+virus = []
 
 dx = [0, 0, -1, 1]
-dy = [1, -1, 0, 0]
+dy = [-1, 1, 0, 0]
 
-for i in range(n):
+for i in range(N):
     graph.append(list(map(int, input().split())))
-
-
-s, x, y = map(int, input().split())
-
-
-
-queue = []
-for i in range(n):
-    for j in range(n):
+    for j in range(N):
         if graph[i][j] != 0:
-            data = graph[i][j]
-            queue.append((data, i, j, 0))
+            virus.append((graph[i][j], i, j))
 
-queue.sort()
+S, X, Y = map(int, input().split())
 
-while queue:
-    virus, _x, _y, t = queue.pop()
+virus.sort()
 
-    if t == s:
-        break
+def bfs(S, X, Y):
+    count = 0
+    q = deque(virus)
+    while q:
+        if count == S:
+            break
+        for _ in range(len(q)):
+            virs, x, y = q.popleft()    
+            for i in range(4):
+                nx = x + dx[i]
+                ny = y + dy[i]
+                if nx >= 0 and ny >= 0 and nx < N and ny < N:
+                    if graph[nx][ny] == 0:
+                        graph[nx][ny] = graph[x][y]
+                        q.append((graph[nx][ny], nx, ny))
+        count+=1
+    return graph[X-1][Y-1]
 
-    for i in range(4):
-        nx = _x + dx[i]
-        ny = _y + dy[i]
+print(bfs(S,X,Y))
 
-    if nx >= 0 and ny >= 0 and nx < n and ny < n:
-        if graph[nx][ny] != 0:
-            graph[nx][ny] = virus
-            queue.append((k, nx, ny, t+1))
-
-print(graph[x-1][y-1])
 
                 
 
