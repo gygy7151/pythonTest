@@ -33,7 +33,7 @@ def check_right(u):
 #         else:
 #             __u[idx] = '('
 #     return __u
-    
+#노필요
 
 def solution(p):
     if not p:
