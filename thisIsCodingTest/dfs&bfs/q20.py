@@ -1,6 +1,6 @@
 '''
 감시피하기/18428
-조합을 활용해 풀면 빠름
+조합을 활용해 풀면 빠름-> 근데이러면 모든 경우를 다 돌아야되서 비현실적임
 '''
 from collections import deque
 from itertools import combinations
