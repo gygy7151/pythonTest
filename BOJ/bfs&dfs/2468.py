@@ -2,6 +2,7 @@
 안전영역
 다른 사람들 풀이를 보니 시간복잡도가 괜찮은가보다..
 그리고 max를 graph[i][j]값을 갱신하면서 입력하면 된다.
+N^3 시간복잡도가 10만이면 괜찮음 초과안남
 '''
 N = int(input())
 graph = [list(map(int, input().split())) for _ in range(N)]
