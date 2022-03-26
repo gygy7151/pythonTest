@@ -1,5 +1,5 @@
 '''
-연구소- 14502번
+연구소- 14502번 3916ms에서 2800ms절감함
 '''
 N,M = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(N)]
@@ -30,6 +30,7 @@ def bfs():
     max_val = max(max_val, cnt)
 
 def wall(cnt):
+    print(cnt)
     if cnt == 3:
         bfs()
         return
@@ -40,6 +41,7 @@ def wall(cnt):
                 graph[i][j] = 1
                 wall(cnt+1)
                 graph[i][j] = 0
+                print('{}0이되어따'.format(cnt))
 wall(0)
 print(max_val)
 
