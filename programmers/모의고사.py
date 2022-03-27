@@ -12,6 +12,7 @@ def solution(answers):
         if b[idx] == prob:
             B += 1
         if c[idx] == prob:
+            print('C까꽁')
             C += 1
     MAX = max(A, B, C)
     print(MAX)
