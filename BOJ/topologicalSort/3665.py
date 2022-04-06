@@ -16,18 +16,18 @@ for _ in range(int(input())):
         a, b = map(int, input().split())
         #b는 a로 갈 수 있다. -> b는 a로 갈 수 없다.(remove)
         #a는 b로 갈 수 없다. -> a는 b로 갈 수 있다.(append)
-        if a in temp[b]:
-            temp[b].remove(a)
-            temp[a].append(b)
-            indegree[a] -= 1
-            indegree[b] += 1
+        if b in temp[a]:
+            temp[a].remove(b)
+            temp[b].append(a)
+            indegree[a] += 1
+            indegree[b] -= 1
         #b는 a로 갈 수 없다. -> b는 a로 갈 수 있다.(append)
         #a는 b로 갈 수 있다. -> a는 b로 갈 수 없다.(remove)
         else:
-            temp[b].append(a)
-            temp[a].remove[b]
-            indegree[b] -= 1
-            indegree[a] += 1
+            temp[a].append(b)
+            temp[b].remove(a)
+            indegree[b] += 1
+            indegree[a] -= 1
     
     # 시작노드
     q = []
@@ -45,7 +45,18 @@ for _ in range(int(input())):
     while q:
         v = q.pop(0)
         ans.append(v)
-        
+        for i in temp[v]:
+            indegree[i] -= 1
+            if not indegree[i]:
+                q.append(i)
+    if sum(indegree) > -1:
+        print('IMPOSSIBLE')
+
+    else:
+        print(*ans)
+
+
+
 
 
 
