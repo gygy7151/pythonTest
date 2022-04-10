@@ -1,5 +1,5 @@
 # import re
-call = "ababdefdedeabc"
+call = "abcabcbabc"
 # pattern = [[] for _ in range(len(call))]
 # long = len(pattern)
     
@@ -50,13 +50,12 @@ def solution(call):
                     # print(i+gap)
                     del answer[i]
                     # print(answer)
-                return True
-        return False
-    tag = False
+                delete(gap, word)
+        return 
     for _ in range(org*len(answer)):
         for wrd in max_ptrn:
             diff = len(wrd)
-            tag = delete(diff, wrd)
+            delete(diff, wrd)
     answer = "".join(answer)
     return answer
 
