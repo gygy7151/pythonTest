@@ -1,5 +1,5 @@
 '''
-이차원배열과연산 - 시뮬,구현
+이차원배열과연산 - 시간도 줄이고, 코드길이와 메모리도 줄였다
 '''
 from collections import Counter
 def transpose(maps):
@@ -46,7 +46,3 @@ while time <= 100:
 
 if not find:
     print('-1')
-
-
-
-
