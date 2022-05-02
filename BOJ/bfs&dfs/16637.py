@@ -1,5 +1,5 @@
 '''
-괄호추가하기
+괄호추가하기- 걍 암기 필요
 '''
 def ev(a,b,c):
     return eval(str(a)+b+str(c))
