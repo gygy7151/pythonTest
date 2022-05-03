@@ -83,9 +83,7 @@ def stackBowl1(fishes, N):
         가장 왼쪽에 있는 어항부터, 가장 아래쪽에 있는 어항 순
         '''
     #r = len(temp[0])
-    cnt = 0
     bowl = []
-
     for c in range(len(rot[0])):
         for r in range(len(rot)-1, -1, -1):
            #값을 변경했을 때만
@@ -95,14 +93,17 @@ def stackBowl1(fishes, N):
     fishes = bowl[:]
     return fishes
 def stackBowl2(fishes, N):
+    print(fishes)
     """
     가운데를 중심으로  N/2개를 공중 부양시켜 전체를 시계 방향으로 180도 회전 시킨 다음, 오른쪽 N/2개
     두 번 반복
     두 번 반복 하면 바닥에 있는 어항의 수는 N/4개
     """
     left = list(reversed(fishes[:(N//2)]))
+    print(left)
     right = fishes[N//2:]
     stackbowl = [left] + [right]
+    print(stackbowl)
 
     left = [[0]*(N//4) for _ in range(2)]
     right = [[0]*(N//4) for _ in range(2)]
