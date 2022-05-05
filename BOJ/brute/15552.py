@@ -1,5 +1,5 @@
 '''
-빠른 A + B
+빠른 A + B - sys.stdin.readline 활용 좋은 예제
 '''
 import sys
 input = sys.stdin.readline

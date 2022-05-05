@@ -1,5 +1,8 @@
+'''
+첫번째 풀이
+'''
 # import re
-call = "abcabcbabc"
+call = "abckdekabcdabcdk"
 # pattern = [[] for _ in range(len(call))]
 # long = len(pattern)
     
@@ -39,7 +42,7 @@ def solution(call):
                     org = new
                     max_ptrn.clear()
                     max_ptrn.append(ptrn)
-    # print(max_ptrn)
+    print(max_ptrn)
     answer = lis
     def delete(gap, word):
         for i in range(len(answer) - gap):
@@ -57,7 +60,7 @@ def solution(call):
             diff = len(wrd)
             delete(diff, wrd)
     answer = "".join(answer)
-    return answer
+    return answer   
 
 print(solution(call))
 

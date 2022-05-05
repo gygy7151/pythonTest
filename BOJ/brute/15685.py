@@ -11,11 +11,13 @@ for _ in range(n):
     curve[x][y] = 1
     
     move = [d]
-    for _ in range(g):
+    for j in range(g):
         tmp = []
         for i in range(len(move)):
             tmp.append((move[-i-1] + 1) % 4)
         move.extend(tmp)
+        print(j)
+        print(move)
     
     for i in move:
         nx, ny = x+dir[i][0], y+dir[i][1]
