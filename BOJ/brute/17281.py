@@ -19,10 +19,9 @@ for i in set(p):
         out = 0
         base1, base2, base3 = 0, 0, 0
         while out != 3:
-            if board[inning][order[index]] == 0:
-                out += 1
-            elif board[inning][order[index]] == 1:
+            if board[inning][order[index]] == 1:
                 score += base3
+                #아 1은 스트라이커를 나타낸다, 스트라이커 앞엔 우선은 아무도 없으니 0으로 처리해준거
                 base1, base2, base3 = 1, base1, base2
             elif board[inning][order[index]] == 2:
                 score += (base2 + base3)
@@ -33,6 +32,8 @@ for i in set(p):
             elif board[inning][order[index]] == 4:
                 score += (base1 + base2 + base3 + 1)
                 base1, base2, base3 = 0, 0, 0
+            else:
+                out += 1
             index += 1
             if index == 9:
                 index = 0
