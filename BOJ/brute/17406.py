@@ -11,7 +11,7 @@ N, M, K = map(int, input().split())
 a = [list(map(int, input().split())) for _ in range(N)]
 rcs = [list(map(int, input().split())) for _ in range(K)]
 
-ans = int(1e9)
+ans = int(1)
 
 # 1. 회전 순서 정하기 (최대 6!=720)
 for p in permutations(rcs, K):
