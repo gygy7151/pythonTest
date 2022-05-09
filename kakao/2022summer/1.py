@@ -18,15 +18,12 @@ def solution(survey, choices):
             category[opt[1]] += score[num]
     order = ['R','T','C','F','J','M','A','N']
     answer = ""
+
     for i in range(0, 7, 2):
         if category[order[i]] >= category[order[i+1]]:
             answer += order[i]
         elif category[order[i]] < category[order[i+1]]:
             answer += order[i+1]
-    answer = list(answer)
-    answer.insert(0,'\"')
-    answer.append('\"')
-    answer = ''.join(answer)
     return answer
 res = solution(survey,choices)
 print(res)
