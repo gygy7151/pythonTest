@@ -8,8 +8,10 @@ def solution(survey, choices):
     n = len(survey)
     score = [0,3,2,1,0,1,2,3]
     category = {'R':0, 'T':0, 'C':0, 'F':0, 'J':0, 'M':0, 'A':0, 'N':0}
+
     for id, opt in enumerate(survey):
         num = choices[id]
+        
         if score[num] == 0:
             break
         if 0 < num < 4:

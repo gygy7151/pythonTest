@@ -34,7 +34,6 @@ def calculate():
             
     print(min_cost_sum[1][file_size])
 
-
 for _ in range(int(input())):
     calculate()
 '''
