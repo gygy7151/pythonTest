@@ -38,14 +38,6 @@ for i in range(n):
         s_table[sushi] -= 1
     answer = max(answer, current_number)
 print(answer)
-    
-
-    
-        
-
-
-
-
 
 '''
 첫번째풀이 틀림
