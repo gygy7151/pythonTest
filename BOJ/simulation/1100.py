@@ -8,6 +8,7 @@ while cnt > 0:
 
     for i in [1,2]:
         board = list(map(str, input().rstrip()))
+        
         if i == 1:
             for i in range(0,7,2):
                 if board[i] == 'F':
