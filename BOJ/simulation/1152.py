@@ -5,9 +5,11 @@
 # 그런데양쪽에도 공백 존재 가능하다 했으므로 아래와 같이 경우의수 4가지 존재 
 # 아.. 빈 문자열도 카운팅해야 했음
 test = tuple(input().split())
-
 print(len(test))
 
+'''
+아래풀이는 공백으로 이루어진 문자열 제외
+'''
 # def result(cnt):
 #     res = 0
 #     res = cnt * 2
