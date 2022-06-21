@@ -1,5 +1,5 @@
 '''
-소수구하기 - 소수하나씩
+소수구하기 - 소수하나씩 https://wikidocs.net/21638 참조
 '''
 # start, end = map(int, input().split())
 # memo = [0,0] + [1] * (end-1)
@@ -17,6 +17,9 @@
 
 '''
 두번째풀이 - 에라토스테네스의 체를 잘못이해하고 활용했다.. -> 역시나 시간초과
+'''
+'''
+네번째 풀이 - 에라토스 테네스의 체랑 함께 max범위를 잡았더니 272ms초나 시간비용줄일 수 있었음
 '''
 '''
 합성수로 접근하되 체크하는 배수 범위를 max로 제한했다.
@@ -44,7 +47,8 @@ N = len(memo)
 
 for i in range(2, max_num+1):
     # 소수만 추가
-    delete(i)
+    if memo[i] == 1:
+        delete(i)
 
 for i in range(start,end+1):
     if memo[i] == 1:
