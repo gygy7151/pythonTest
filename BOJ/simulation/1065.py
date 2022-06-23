@@ -5,31 +5,25 @@ N: 주어지는 숫자
 def solution():
     cnt = 0
 
+    # 모든 n의 범위 지정
     for n in range(1, int(input())+1):
         N = list(str(n))
         length = len(N)
         if length == 1:
             cnt+= 1
             continue
+        # n이 한수인지 검증
+        cnt += 1
         diff = int(N[0]) - int(N[1])
-
-        res = True
         for i in range(1,length-1):
 
             if diff != (int(N[i]) - int(N[i+1])):
-                res = False
+                cnt -= 1
                 break
 
             else:
                 diff = int(N[i]) - int(N[i+1])
-        if res:
-            cnt += 1
          
-
-
     return cnt
 
 print(solution())
-
-
-
