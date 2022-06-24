@@ -8,30 +8,34 @@ def solution():
    for _ in range(int(input())):
         N, M = map(int, input().split())
         Q = list(map(int, input().split()))
-        NQ = []
-        for i in range(N):
-            NQ.append((i, Q[i]))
+        NQ = [(x,idx) for idx, x in enumerate(Q)]
+        if len(Q) == 1:
+            # 특정입력값을 예외처리할때 return을 사용하면 나머지 입력값들은 검정할 수 없게됨. 조심할것.
+            print(1)
+            continue
 
-        print(NQ)
-        order = 0
-    
+        print_order = 0
+
         while True:
-            n_first = NQ.pop(0)
-            first = Q.pop(0)
-            same_doc_cnt = Q.count(first)
+            # print(NQ)
+            nq, nq_idx = NQ.pop(0)
+            MAX = 0
+            # 이런경우 이진탐색으로 시간복잡도 낮출수있음 단 데이터가 큰경우에 한함. 데이터가 작을땐 오히려 비효율적
+            for val, v_idx in NQ:
+                if val > nq:
+                    MAX = val
 
-            if same_doc_cnt == 0:
-                order += 1
-                if n_first[0] == M:
-                    print(order)
+            #중요도가 높은 문서가 하나라도 없는경우
+            if MAX == 0:
+                print_order += 1
+                if nq_idx == M:
+                    # print('M이랑 같지롱')
+                    # print(nq_idx)
+                    print(print_order)
                     break
-                else:
-                    Q.append(first)
-                    NQ.append(n_first)
-                    continue
-
-            Q.append(first)
-            NQ.append(n_first)
+            else:
+            #중요도가 높은 문서가 하나라도 있는경우 뒤에 재배치
+                NQ.append((nq, nq_idx))
 
 solution()
 
