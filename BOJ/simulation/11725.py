@@ -6,6 +6,7 @@
 '''
 def solution():
     N = int(input())
+    # ***실수주의 [] * (N+1)해주면 => [[]...[]]이 아닌 []이게됨.
     T = [[] for _ in range(N+1)]
     MEMO = [0] * (N+1)
 
