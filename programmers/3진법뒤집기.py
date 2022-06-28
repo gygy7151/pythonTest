@@ -2,7 +2,7 @@
 예산
 '''
 '''
-네번째풀이 - linked list로 접근하기
+네번째풀이 - linked list로 접근하기 array보다 좀더 빨랐음
 '''
 def solution(n):
     answer = 0
