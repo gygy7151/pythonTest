@@ -15,11 +15,12 @@ def solution(numbers, hand):
            ]
     
     L, R = (3,0), (3,2)
-    
+
     for i in range(4):
         for j in range(3):
             MEMO[DIAL[i][j]] = (i,j)
     
+    # pop(0)하면 O(N)시간걸려서 그냥 i인덱스로 접근함
     for i in range(len(numbers)):
         N = numbers[i]
         
