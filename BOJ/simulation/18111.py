@@ -27,42 +27,46 @@ import sys
 from collections import Counter
 input = sys.stdin.readline
 
+def find_min_time(G, B):
+    NG = Counter(G)
+    T = []
+    for H in range(max(NG.keys()), -1, -1):
+        NT = 0
+        # 늘 인벤갯수를 기존 갯수로 초기화 시켜주어야 된다. 
+        # 단, 함수 안의 또 함수안의 변수에서 넘겨받은 인자값은 불변객체이므로 굳이 0으로 초기화 안해줘도됨
+        INVENTORY = B
+        # 뺄때 함께 빼주지말고
+        MINUS_INVEN_CNT = 0
+        # h_cnt = h높이 누적갯수
+        # NG엔 Counter로 땅높이 갯수를 카운팅해서 메모해놓은 딕셔너리 객체임
+        for h, h_cnt in NG.items():
+            if H < h:
+                INVENTORY += (h - H) * h_cnt
+                NT += 2 * (h - H) * h_cnt
+            
+            elif H > h:
+                MINUS_INVEN_CNT += (H - h) * h_cnt
+                # h랑 H랑 순서 뒤바껴서 실패했음
+                NT += (H - h) * h_cnt
+
+        # 인벤보다 빼야할 갯수가 같거나 적은경우
+        if INVENTORY >= MINUS_INVEN_CNT:
+            T.append((NT, H))
+    
+    T.sort(key=lambda x : (x[0], -x[1]))
+    return T[0]
+
 def solution():
     N,M,B = map(int, input().split())
     # Counter에는 리스트 하나만 들어가야 된다. 2차원3차원은 안됨
     G = []
+
     for _ in range(N):
         G.extend(list(map(int, input().split())))
 
-    def find_min_time(G, B):
-        NG = Counter(G)
-        T = []
-        for H in range(max(NG.keys()), -1, -1):
-            NT = 0
-            # 늘 인벤갯수를 기존 갯수로 초기화 시켜주어야 된다. 
-            # 단, 함수 안의 또 함수안의 변수에서 넘겨받은 인자값은 불변객체이므로 굳이 0으로 초기화 안해줘도됨
-            INVENTORY = B
-            # 뺄때 함께 빼주지말고
-            MINUS_INVEN_CNT = 0
-            # h_cnt = h높이 누적갯수
-            for h, h_cnt in NG.items():
-                if H < h:
-                    INVENTORY += (h - H) * h_cnt
-                    NT += 2 * (h - H) * h_cnt
-                
-                elif H > h:
-                    MINUS_INVEN_CNT += (H - h) * h_cnt
-                    # h랑 H랑 순서 뒤바껴서 실패했음
-                    NT += (H - h) * h_cnt
-            # 인벤보다 빼야할 갯수가 같거나 적은경우
-            if INVENTORY >= MINUS_INVEN_CNT:
-                T.append((NT, H))
-        
-        T.sort(key=lambda x : (x[0], -x[1]))
-
-        return T[0]
     ANS = find_min_time(G, B)
     return ANS
+
 res = solution()
 print(*res, sep=' ')
 
