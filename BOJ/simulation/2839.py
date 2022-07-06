@@ -2,48 +2,68 @@
 설탕배달
 '''
 '''
-네번째풀이 - 다른코드 참조
-변수명도 올바르고, 로직도 깔끔하고 좋당
+여섯번째풀이
 '''
 def solution():
-    N = int(input())
+    SUGAR = int(input())
+    POCKET = 0
 
-    BAG = 0
-    while N >= 0 :
-        if N % 5 == 0 :  # 5의 배수이면
-            BAG += (N // 5)  # 5로 나눈 몫을 구해야 정수가 됨
-            return BAG
-        N -= 3  
-        BAG += 1  # 5의 배수가 될 때까지 설탕-3, 봉지+1
+    while SUGAR > 0:
+        if SUGAR % 5 == 0:
+            return SUGAR // 5 + POCKET
+        else:
+            SUGAR -= 3
+            POCKET += 1
     return -1
+
 print(solution())
+    
+
 '''
-세번째풀이
+다섯번째풀이 - 다른코드 참조 - 성공
+변수명도 올바르고, 로직도 깔끔하고 좋당
 '''
 # def solution():
 #     N = int(input())
-#     ANS = int(1e9)
-#     if N in [3, 5]:
-#         return 1
 
-#     if N == 4:
-#         return 1
-
-#     n = N // 5
-
-#     for i in range(n+1):
-#         if (N-5*i) % 3 == 0:
-#             ANS = min(ANS, i + (N-5*i)// 3 )
-#         elif (N-5*i) % 5 == 0:
-#             ANS = min(ANS, i + (N-5*i)// 3 )
-
-#         elif (N-5*i) == 0:
-#             ANS = min(ANS, i)
-
-#     if ANS == int(1e9):
-#         ANS = -1
-#     return ANS
+#     BAG = 0
+#     while N >= 0 :
+#         if N % 5 == 0 :  # 5의 배수이면
+#             BAG += (N // 5)  # 5로 나눈 몫을 구해야 정수가 됨
+#             return BAG
+#         N -= 3  
+#         BAG += 1  # 5의 배수가 될 때까지 설탕-3, 봉지+1
+#     return -1
 # print(solution())
+'''
+네번째풀이 - 틀림
+'''
+def solution():
+    N = int(input())
+    ANS = []
+    if N in [3, 5]:
+        return 1
+
+    if N == 4:
+        return 1
+
+    n = N // 5
+    
+    # 아.. 어차피 5로 나누면 나머지가 0에서 4 사이 이므로 다시 또 나머지 나눌 필요 없었음..
+    for i in range(n+1):
+        if (N-5*i) % 3 == 0:
+            ANS.append(i + (N-5*i)// 3 )
+        elif (N-5*i) % 5 == 0:
+            ANS.append(i + (N-5*i)// 3)
+
+        elif (N-5*i) == 0:
+            ANS.append(i)
+    if len(ANS) == 0:
+        return -1
+    else:
+        return min(ANS)
+
+print(solution())
 
 
 '''
