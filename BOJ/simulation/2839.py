@@ -2,13 +2,22 @@
 설탕배달
 '''
 '''
-여섯번째풀이
+일곱번째풀이 - 맞음
+'''
+'''
+바텀업 방식으로 접근
+3의 갯수가 0개일때부터 시작
+5로나눈 나머지를 또 3이나 5로 나누어봤자 결과는 두개밖에 없음
+3보다 작거나 크면 -1일꺼고 5로나눈 나머지는 항상 4이하이기 때문에 5로 다시 나누면 1~4값이 나오므로 0이 안되서 -1일꺼임
+이걸로는 명확한 3의 갯수를 구할 수없음
 '''
 def solution():
     SUGAR = int(input())
     POCKET = 0
-
-    while SUGAR > 0:
+    
+    # N은 0보다 크거나 같을때까지 계산해줘야됨
+    # 0이되면 나누어 떨어지므로 지금까지 가방갯수랑 합산해서 리턴됨
+    while SUGAR >= 0:
         if SUGAR % 5 == 0:
             return SUGAR // 5 + POCKET
         else:
@@ -17,6 +26,23 @@ def solution():
     return -1
 
 print(solution())
+
+'''
+여섯번째풀이 -틀림
+'''
+# def solution():
+#     SUGAR = int(input())
+#     POCKET = 0
+
+#     while SUGAR > 0:
+#         if SUGAR % 5 == 0:
+#             return SUGAR // 5 + POCKET
+#         else:
+#             SUGAR -= 3
+#             POCKET += 1
+#     return -1
+
+# print(solution())
     
 
 '''
