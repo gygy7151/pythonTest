@@ -2,8 +2,10 @@
 비밀번호찾기
 '''
 '''
-첫번째풀이
+첫번째풀이 
 '''
+import sys
+input = sys.stdin.readline
 def solution():
     N, M = map(int, input().split())
     MEMO = {}
