@@ -2,7 +2,14 @@
 서울에서김서방찾기
 '''
 '''
-첫번째풀이
+두번째풀이 - 맞음
+'''
+def solution(seoul):
+    answer = seoul.index('Kim') 
+    return "김서방은 {idx}에 있다".format(idx = answer)
+
+'''
+첫번째풀이 - 틀림 - 초기 sort하면 안되는거였는데 순서무시하고 내맘대로 바꿔버림
 '''
 def solution(seoul):
     start = 1

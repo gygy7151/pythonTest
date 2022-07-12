@@ -2,7 +2,30 @@
 소수찾기 -  에라토스체를 이용하여 2이상의 최대 n제곱까지의 배수 제외하고 소수만 1남김
 '''
 '''
-두번째풀이
+세번째풀이 - 제곱근 이용하면 더 빠름
+'''
+def solution(n):
+    answer = 0
+    MEMO = [1] * 1000001
+    MEMO[0], MEMO[1] = 0, 0
+
+    for i in range(2, int(n**(0.5))+1):
+
+        if MEMO[i] == 1:
+
+            for j in range(2*i, n+1, i):
+                MEMO[j] = 0
+
+    for i in range(1, n+1):
+
+        if MEMO[i] == 1:
+            answer += 1
+
+    return answer
+
+
+'''
+두번째풀이 - 효율정, 정확성 모두 통과됨
 '''
 def solution(n):
     answer = 0
@@ -13,7 +36,7 @@ def solution(n):
 
     while MAX**2 <= n:
         MAX += 1
-    print(MAX)
+
     for i in range(2, MAX+1):
 
         if MEMO[i] == 1:
