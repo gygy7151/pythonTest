@@ -28,7 +28,6 @@ def solution():
         CNT += 1
         if check():
             return CNT
-
     return -1
 print(solution())
 '''
