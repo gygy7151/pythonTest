@@ -25,7 +25,7 @@ def solution():
             if MEMO[B] == 0:
                 MEMO[B] = A
                 Q.append(B)
-    
+                
     for i in range(2, N+1):
         print(MEMO[i])
 
