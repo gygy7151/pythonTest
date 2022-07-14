@@ -13,7 +13,6 @@ def solution(arr):
         if answer[-1:] != [el]:
             answer.append(el)
     return answer
-
 '''
 첫번째풀이
 '''
