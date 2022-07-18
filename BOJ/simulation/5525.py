@@ -2,7 +2,7 @@
 IOIOI
 '''
 '''
-세번째풀이 - KMP
+세번째풀이 - KMP....드뎌정복
 '''
 def makeTable(pattern):
     patternSize = len(pattern)
@@ -15,6 +15,8 @@ def makeTable(pattern):
             j = table[j-1]
         
         if pattern[i] == pattern[j]:
+            #어차피 i는 자연스럽게 +1이되고 j에만 +1해주면됨
+            #그리고 i는 +1되기전에 일치하는 인덱스위치에세 j를 대입해주면됨(반드시 1이더해지고 대입해줘야됨)
             j += 1
             table[i] = j
 
