@@ -75,12 +75,13 @@ for _ in range(int(input())):
             while MAX_H and not MEMO[MAX_H[0][1]]:
                 heapq.heappop(MAX_H)
             
-            
             if MAX_H:
                 MEMO[MAX_H[0][1]] = False
                 heapq.heappop(MAX_H)
+
         #최솟값삭제
         else:
+
             while MIN_H and not MEMO[MIN_H[0][1]]:
                 heapq.heappop(MIN_H)
             
