@@ -35,7 +35,7 @@ dir = [
     [ (0,0), (0,1), (1,1), (1,2) ]
 ]
     
-
+#dfs를 그냥 일반 bfs처럼 풀이가능해짐
 def tetromino(x,y):
     global ANS
 
