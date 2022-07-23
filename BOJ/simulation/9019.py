@@ -2,7 +2,7 @@
 DSLR
 '''
 '''
-두번째풀이 -아..조건을 잘못이해했구나
+세번째풀이 - BFS를 유지하되 방문여부 처리를 해시테이블 set을 활용-python3(x),pypy(0)
 '''
 from collections import deque
 import sys
@@ -10,38 +10,106 @@ input = sys.stdin.readline
 
 for _ in range(int(input())):
     A, B = map(int, input().split())
-    q= deque()
-    q.append((A, ""))
-    visit = [False] * 10000
-# n = ((d1 × 10 + d2) × 10 + d3) × 10 + d4라고 하자)
+    q = deque([(A, "")])
+    visited = set()
 
+    def left(n):
+        front = n % 1000
+        back = n // 1000
+        res = front*10 + back
+        return res
+
+    def right(n):
+        front = n % 10
+        back = n // 10
+        res = front*1000 + back
+        return res
+
+    def double(n):
+        res = n*2
+        if res > 9999:
+            res %= 10000
+        return res
+
+    def slice(n):
+        res = n
+        if res == 0: return 9999
+        res -= 1
+        return res
 
     while q:
         num, path = q.popleft()
-        visit[num] = True
+        visited.add(num)
+        
         if num == B:
             print(path)
             break
 
-        num1 = (2*num)%10000
-        if not visit[num1]:
+        # D
+        num1 = double(num)
+        if num1 not in visited:
             q.append((num1, path+"D"))
-            visit[num1] = True
+            visited.add(num1)
 
-        num2 = (num-1)%10000
-        if not visit[num2]:
+        # S
+        num2 = slice(num)
+        if num2 not in visited:
             q.append((num2, path+"S"))
-            visit[num2] = True
+            visited.add(num2)
 
-        num3 = (10*num+(num//1000))%10000
-        if not visit[num3]:
-            q.append((num3, path+"L"))
-            visit[num3] = True
+        # L
+        num3 = left(num)
+        if num3 not in visited:
+            q.append((num3, path+'L'))
+            visited.add(num3)
 
-        num4 = (num//10+(num%10)*1000)%10000
-        if not visit[num4]:
-            q.append((num4, path+"R"))
-            visit[num4] = True
+        # R
+        num4 = right(num)
+        if num4 not in visited:
+            q.append((num4, path+'R'))
+            visited.add(num4)
+
+'''
+두번째풀이 -아..조건을 잘못이해했구나 - 그런데도 시간초과
+'''
+# from collections import deque
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     A, B = map(int, input().split())
+#     q= deque()
+#     q.append((A, ""))
+#     visit = [False] * 10000
+# # n = ((d1 × 10 + d2) × 10 + d3) × 10 + d4라고 하자)
+
+
+#     while q:
+#         num, path = q.popleft()
+#         visit[num] = True
+#         if num == B:
+#             print(path)
+#             break
+
+#         num1 = (2*num)%10000
+#         if not visit[num1]:
+#             q.append((num1, path+"D"))
+#             visit[num1] = True
+
+#         num2 = (num-1)%10000
+#         if not visit[num2]:
+#             q.append((num2, path+"S"))
+#             visit[num2] = True
+
+#         num3 = (10*num+(num//1000))%10000
+#         if not visit[num3]:
+#             q.append((num3, path+"L"))
+#             visit[num3] = True
+
+#         num4 = (num//10+(num%10)*1000)%10000
+#         if not visit[num4]:
+#             q.append((num4, path+"R"))
+#             visit[num4] = True
 
 
 
