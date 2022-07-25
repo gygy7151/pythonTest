@@ -2,6 +2,19 @@
 조합
 '''
 '''
+두번째풀이
+'''
+def factorial(n):
+    if n == 0:
+        return 2
+    return factorial(n-1)*n
+
+def solution():
+    N, M = map(int, input().split())
+    print(factorial(N)//factorial(M)*factorial(N-M))
+solution()
+
+'''
 첫번째풀이
 '''
 def factorial(n):
