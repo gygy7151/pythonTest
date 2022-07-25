@@ -24,45 +24,68 @@
 #         print(P[right] - P[left-1])
 
 # solution()
-
 '''
-두번째풀이 - DP
+세번째풀이 - 틀림
 '''
 import sys
 input = sys.stdin.readline
 
 def solution():
     N, M = map(int, input().split())
-    G = []
-    DP = []
-    
-    for i in range(N):
-        sumVal = 0
-        sumList = []
-        data = list(map(int, input().split()))
-        G.append(data)
+    G = [[0 for _ in range(N+1)]]
 
-        for a in data:
-            sumVal += a
-            sumList.append(sumVal)
-        DP.append(sumList)
+    for _ in range(N):
+        data = [0] + list(map(int, input().split()))
+        G.append(data)
     
-    print(DP)
+    #행부터 더하기
+    for i in range(1,N+1):
+        for j in range(1,N):
+            G[i][j+1] += G[i][j]
     
+    #열끼리 더하기
+    for j in range(1,N+1):
+        for i in range(1,N):
+            G[i+1][j] += G[i][j]
+
     for _ in range(M):
         x1, y1, x2, y2 = map(int, input().split())
-        answer = 0
-
-        for i in range(x1-1, x2):
-            answer += (DP[i][y2-1] - DP[i][y1-2])
-            if x1 == 1:
-                # print(answer)
-                print(DP[i][y2-1])
-                print(DP[i][y1-2])
-        
-        print(answer)
-
+        print(G[x2][y2] - (G[x1-1][y2] + G[x2][y1-1]) + G[x1-1][y1-1])
 solution()
+
+
+'''
+두번째풀이 - DP - 시간초과
+'''
+# import sys
+# input = sys.stdin.readline
+
+# def solution():
+#     N, M = map(int, input().split())
+#     DP = [[] for _ in range(N)]
+    
+#     for i in range(N):
+#         sumVal = 0
+#         data = list(map(int, input().split()))
+
+#         for a in data:
+#             sumVal += a
+#             DP[i].append(sumVal)
+
+#     for _ in range(M):
+#         x1, y1, x2, y2 = map(int, input().split())
+#         answer = 0
+#         x2 -= 1
+#         while x2 > -1:
+#             if y1 == 1:
+#                 answer += DP[x2][y2-1]
+#             else:
+#                 answer += (DP[x2][y2-1] - DP[x2][y1-2])
+#             x2 -= 1
+        
+#         print(answer)
+
+# solution()
 
     
 
