@@ -2,7 +2,7 @@
 곱셈
 '''
 '''
-세번째
+세번째 - 시간 복잡도 T(n//2)
 '''
 def solution():
     a, b, c = map(int, input().split())
@@ -20,23 +20,23 @@ def solution():
 solution()
 
 '''
-두번쨒 
+두번쨒  - 걍 참조코드
 '''
-a, b, c = map(int, input().split())
+# a, b, c = map(int, input().split())
 
-def sol(a,b):
-    if b == 1:
-        return a % c
+# def sol(a,b):
+#     if b == 1:
+#         return a % c
     
-    temp = sol(a, b// 2)
+#     temp = sol(a, b// 2)
 
-    if b % 2 == 0:
-        return temp * temp % c
+#     if b % 2 == 0:
+#         return temp * temp % c
     
-    else:
-        return temp * temp * a % c
+#     else:
+#         return temp * temp * a % c
 
-print(sol(a,b))
+# print(sol(a,b))
 
 '''
 첫번째
