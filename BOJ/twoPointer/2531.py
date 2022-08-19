@@ -4,7 +4,7 @@
 '''
 두번째풀이
 '''
-n, d, k, c = map(int, input().split())
+n, d, k, c = map(int, input().split()) # n은 접시갯수, d는 초밥가짓수, k는 연속해서 먹는 접시의수, c는 쿠폰번호
 sushies = [int(input())for _ in range(n)]
 sushies = sushies + sushies[:k]
 

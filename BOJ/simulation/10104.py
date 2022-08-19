@@ -2,7 +2,7 @@
 Party Invitation
 '''
 '''
-네번째
+네번째 - 더빠르네, 리스트 컴프리헨션 활용
 '''
 def solution():
     K = int(input())

@@ -1,5 +1,5 @@
 '''
-숨바꼭질5014
+스타트링크
 '''
 F, S, G, U, D = map(int, input().split())
 visited = [-1] * (F+1)
