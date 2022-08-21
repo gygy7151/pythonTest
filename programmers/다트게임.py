@@ -2,34 +2,79 @@
 다트게임
 '''
 '''
-세번째 풀이
+네번째풀이 - 시간복잡도를 줄임
 '''
 def solution(dartResult):
-    answer = []
-    # reaplce할때 새로운 객체를 기촌 dartResult가 참조하도록 반드시 주소참조해준다.
-    dartResult = dartResult.replace('10', 'n')
-    S = [ '10' if x == 'n' else x for x in dartResult]
-    B = ['S', 'D', 'T']
-    i = -1
+    # 점수(0~10)|보너스(S,D,T)[옵션](*,#,없음)
+    score = [0, 0, 0]
+    dartResult = list(dartResult[::-1])
 
-    for s in S:
-        if s in B:
-            answer[i] = answer[i] ** (B.index(s)+1)
-        #내가 문제를 잘못이해했다..
-        elif s == '*':
-            answer[i] = answer[i] * 2
-            # 두번째
-            if i != 0:
-                answer[i-1] = answer[i-1]*2
+    for i in range(3):
 
-        elif s == '#':
-            answer[i] = answer[i] * (-1)
-        
+        # 점수
+
+        if dartResult[-2].isdigit(): 
+            score[i] = 10
+            dartResult.pop()
+            dartResult.pop()
+
         else:
-            answer.append(int(s))
-            i += 1
+            score[i] = int(dartResult[-1])
+            dartResult.pop()
+
+
+        # 보너스
+
+        if dartResult[-1] == 'D': score[i] = score[i]**2
+        elif dartResult[-1] == 'T': score[i] = score[i]**3
+        dartResult.pop()
+
+        # 옵션
+        if not dartResult or dartResult[-1].isdigit(): 
+            continue
+
+        if dartResult[-1] == '*':
+            score[i] *= 2
+
+            if i != 0:
+                score[i-1] *= 2
+        else:
+            score[i] *= -1
+
+        dartResult.pop()
+
+    return sum(score)
+solution()
+
+'''
+세번째 풀이
+'''
+# def solution(dartResult):
+#     answer = []
+#     # reaplce할때 새로운 객체를 기촌 dartResult가 참조하도록 반드시 주소참조해준다.
+#     dartResult = dartResult.replace('10', 'n')
+#     S = [ '10' if x == 'n' else x for x in dartResult]
+#     B = ['S', 'D', 'T']
+#     i = -1
+
+#     for s in S:
+#         if s in B:
+#             answer[i] = answer[i] ** (B.index(s)+1)
+#         #내가 문제를 잘못이해했다..
+#         elif s == '*':
+#             answer[i] = answer[i] * 2
+#             # 두번째
+#             if i != 0:
+#                 answer[i-1] = answer[i-1]*2
+
+#         elif s == '#':
+#             answer[i] = answer[i] * (-1)
+        
+#         else:
+#             answer.append(int(s))
+#             i += 1
     
-    return sum(answer)
+#     return sum(answer)
 
 '''
 두번째풀이 - 역시나 틀림..
