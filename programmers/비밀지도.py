@@ -2,61 +2,72 @@
 비밀지도
 '''
 '''
+네번째풀이
+'''
+# def change(x, n):
+
+
+# def solution(n, arr1, arr2):
+#     answer = []
+#     for i in range(n):
+#         answer.append(change(arr1[i] | arr2[i]))
+
+'''
 세번째풀이 - zip사용 출력에러 및 지역변수 중복사용에러 해결
 *** 실수 :  TA 만들때 0추가해주는 갯수를 (len(A) - 1)이라는 이상한 숫자를 만듦;; (n - len(A)) (n - len(B))임
 '''
-def solution(n, arr1, arr2):
-    answer = []
-    MAPA, MAPB = [], []
+# def solution(n, arr1, arr2):
+#     answer = []
+#     MAPA, MAPB = [], []
 
-    for a, b in zip(arr1, arr2):
-        A = format(a, 'b')
-        B = format(b, 'b')
-        MA, MB = [], []
+#     for a, b in zip(arr1, arr2):
+#         A = format(a, 'b')
+#         B = format(b, 'b')
+#         MA, MB = [], []
         
-        # 상당히 비효율적임.  rjust(n, '0') 또는 zfill(n)해주면 쉬움 코드가 5배가량 차이남
-        if len(A) != n:
-            TA = [0] * (n -len(A))
-            A = ''.join(map(str, TA)) + A
+#         # 상당히 비효율적임.  rjust(n, '0') 또는 zfill(n)해주면 쉬움 코드가 5배가량 차이남
+#         if len(A) != n:
+#             TA = [0] * (n -len(A))
+#             A = ''.join(map(str, TA)) + A
 
-        if len(B) != n:
-            TB = [0] * (n -len(B))
-            B = ''.join(map(str, TB)) + B
+#         if len(B) != n:
+#             TB = [0] * (n -len(B))
+#             B = ''.join(map(str, TB)) + B
  
-        for a in A:
-            if a == '0':
-                MA.append(' ')
+#         for a in A:
+#             if a == '0':
+#                 MA.append(' ')
 
-            else:
-                MA.append('#')
+#             else:
+#                 MA.append('#')
 
-        for b in B:
-            if b == '0':
-                MB.append(' ')
-            else:
-                MB.append('#')
+#         for b in B:
+#             if b == '0':
+#                 MB.append(' ')
+#             else:
+#                 MB.append('#')
 
-        MAPA.append(MA)
-        MAPB.append(MB)
+#         MAPA.append(MA)
+#         MAPB.append(MB)
 
-    #귀찮아서 그냥 zip사용함. 이전에 더 길었음(X) 이러면 순서가 뒤바껴서 함부로 사용하면 안됨
-    #아.. zip하면 내용이 아예바껴서 안됨
-    for i in range(n):
-        # 아.. MC가 초기화가 안됨
-        MC = []
-        for j in range(n):
-            if MAPA[i][j] == ' ' and MAPB[i][j] == ' ':
-                MC.append(' ')
-            else:
-                MC.append('#')
+#     #귀찮아서 그냥 zip사용함. 이전에 더 길었음(X) 이러면 순서가 뒤바껴서 함부로 사용하면 안됨
+#     #아.. zip하면 내용이 아예바껴서 안됨
+#     for i in range(n):
+#         # 아.. MC가 초기화가 안됨
+#         MC = []
+#         for j in range(n):
+#             if MAPA[i][j] == ' ' and MAPB[i][j] == ' ':
+#                 MC.append(' ')
+#             else:
+#                 MC.append('#')
         
-        #이때도 처음엔 리스트를 담았는데 출력조건은 리스트가 아닌 스트링 문자열이었음
-        # answer.append(MC)
-        #join은 스트링 객체를 반환한다.
-        #print(''.join(MC))
-        answer.append(''.join(MC))
+#         #이때도 처음엔 리스트를 담았는데 출력조건은 리스트가 아닌 스트링 문자열이었음
+#         # answer.append(MC)
+#         #join은 스트링 객체를 반환한다.
+#         #print(''.join(MC))
+#         answer.append(''.join(MC))
   
-    return answer
+#     return answer
 
 
 '''
