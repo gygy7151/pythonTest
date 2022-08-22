@@ -1,3 +1,6 @@
+'''
+바이러스
+'''
 n = int(input())
 m = int(input())
 graph = [[0] * (n+1) for _ in range(n+1)]

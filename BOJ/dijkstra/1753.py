@@ -2,7 +2,7 @@
 최단경로
 '''
 '''
-두번째풀이 - 방문여부 체크 상관없이 푸는 방법
+두번째풀이 - 방문여부 체크 상관없이 푸는 방법 - 해결
 '''
 import sys
 import heapq
@@ -28,7 +28,7 @@ def solution():
 
             for new_cost, next_node in G[now_node]:
                 next_cost = now_cost + new_cost
-                
+
                 if next_cost < DP[next_node]:
                     DP[next_node] = next_cost
                     heapq.heappush(min_heap, (next_cost, next_node))

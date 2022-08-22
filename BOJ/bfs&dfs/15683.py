@@ -61,7 +61,7 @@
 
 
 '''
-district -> 안됨..
+district -> 안됨..pypy로품
 '''
 import copy
 dir = ((-1,0), (1,0), (0, -1), (0,1))

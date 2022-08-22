@@ -52,10 +52,9 @@ def solution(n, info):
     return answer 
 
 '''
-두번째 풀이 - 시뮬레이션 - 조합활용
+두번째 풀이 - 시뮬레이션 - 조합활용 - 추후도전
 '''
-def solution(n, apeach_score):
-    
+
 
 '''
 첫번째 풀이  - 틀림 -> 수정완료
