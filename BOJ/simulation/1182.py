@@ -13,7 +13,7 @@ cnt = 0
 def subset_sum(idx, sub_sum):
     global cnt
 
-    if idx == n:
+    if idx == n: #n보다 크거나 같으면 무조건 종료
         return
 
     sub_sum += arr[idx]
