@@ -32,10 +32,11 @@ def bfs(rx, ry, bx, by):
 
     while q:
         for _ in range(len(q)):
+            print('날래?')
             rx, ry, bx, by = q.popleft()
-            # 10회 초과인경우도 -1 출력하지만 미만도 고려해줘야함
+             # 10회초과시 빨간구슬이 구멍을 통해 빠져나갈 수 없는 경우
             if count > 10:
-                print(-1)
+                print(count)
                 return
             
             if graph[rx][ry] == 'O':
@@ -88,8 +89,9 @@ def bfs(rx, ry, bx, by):
                 if (nrx, nry, nbx, nby) not in visited:
                     q.append((nrx, nry, nbx, nby))
                     visited.append((nrx, nry, nbx, nby))
-
         count += 1
+        print(q)
+        print(count)
     # 10회미만이지만 빨간구슬이 구멍을 통해 빠져나갈 수 없는 경우
     print(-1)
 
