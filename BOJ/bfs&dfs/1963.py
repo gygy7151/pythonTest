@@ -32,6 +32,7 @@ def solution():
             # 일,십,백,천의 자리를 0으로 초기화시켜주고 크으..내가 너비 우선 범위를 잘못 선정했음.
             for i in [1, 10, 100, 1000]:
                 n = num - num % ( i * 10) // i * i
+                print(n)
                 
                 for j in range(10):
                     if visit[n] == -1 and memo[n]: # visit은 방문하지 않은 용도를 찾는기능임 헷갈리지말것
