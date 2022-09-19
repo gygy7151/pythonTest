@@ -111,6 +111,7 @@ def solution():
                         result = max(result, visit[x][y] + 1)
 
                     # 활성바이러스가 비활성바이러스 위치로 가면 result 카운트에서 제외시켜준다. 단 방문표시는 한다
+                    # 비활성화가 활성화 되는거기 때문에 그어떤 바이러스의 퍼짐현상도 없음 걍 상태값만 바뀌는거임
                     elif visit[nx][ny] == -1 and graph[nx][ny] == 2:
                         q.append((nx, ny))
                         visit[nx][ny] = visit[x][y] + 1
