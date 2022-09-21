@@ -2,7 +2,7 @@
 귀찮아 SIB
 '''
 '''
-세번째풀이
+세번째풀이 - DP사용 및 시간초과 해결
 '''
 def solution():
     N = int(input())
@@ -22,12 +22,6 @@ def solution():
     
     print(answer)
 solution()
-
-    
-    
-
-
-
 
 
 '''
