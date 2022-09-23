@@ -1,5 +1,6 @@
-4 4
-####
-#JF#
-#..#
-#..#
+5 7
+WLLWWWL
+LLLWLLL
+LWLWLWW
+LWLWLLL
+WLLWLWW
