@@ -5,6 +5,8 @@ ACM Craft
 두번째풀이 - 진입차수 순서대로 dp를 돌려줘야해서 위상정렬 알고리즘을 활용했다.
 '''
 from collections import deque
+import sys
+input= sys.stdin.readline
 
 def solution():
     T = int(input())
