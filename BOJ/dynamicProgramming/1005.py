@@ -18,7 +18,7 @@ def solution():
         DP = [ 0 for _ in range(N+1)] # 해당 건물까지 걸리는 최소 시간
 
         for _ in range(K):
-            a, b = map(int, input().split())
+            a, b = map(int, input().split())#a건물이 완성되어야 b로 갈 수 있다
             seq[a].append(b)
             inDegree[b] += 1
         

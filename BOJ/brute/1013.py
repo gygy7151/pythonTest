@@ -1,5 +1,6 @@
 '''
 Contact
+정규표현식 :https://wikidocs.net/4308#match 사이트 참조
 '''
 '''
 첫번째풀이 - 33%에서 틀림
@@ -20,7 +21,9 @@ def solution():
         if m:print('YES')
         else:print('NO')
 solution()
-
+'''
+두번째풀이
+'''
 
 import re
 import sys

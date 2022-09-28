@@ -77,6 +77,14 @@ def solution():
     for i in range(N):
         for j in range(M):
             # 가장자리인 경우에만 bfs를 돌림
+            if i > 0 and i + 1 < N:
+                if graph[i-1][j] == 'L' and graph[i+1][j] == 'L':
+                    continue
+
+            if j > 0 and j + 1 < M:
+                if graph[i][j-1] == 'L' and graph[i][j+1] == 'L':
+                    continue
+
             if graph[i][j] == 'L':
                 answer = max(answer, bfs(i,j))
     
