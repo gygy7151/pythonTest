@@ -5,6 +5,8 @@ ACM Craft
 두번째풀이 - 진입차수 순서대로 dp를 돌려줘야해서 위상정렬 알고리즘을 활용했다.
 '''
 from collections import deque
+import sys
+input= sys.stdin.readline
 
 def solution():
     T = int(input())
@@ -16,7 +18,7 @@ def solution():
         DP = [ 0 for _ in range(N+1)] # 해당 건물까지 걸리는 최소 시간
 
         for _ in range(K):
-            a, b = map(int, input().split())
+            a, b = map(int, input().split())#a건물이 완성되어야 b로 갈 수 있다
             seq[a].append(b)
             inDegree[b] += 1
         
