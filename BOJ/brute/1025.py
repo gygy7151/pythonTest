@@ -28,6 +28,7 @@ def solution():
                     
                     while 0 <= x < N and 0 <= y < M:
                         S += board[x][y]
+                        # 제곱수 확인을 모듈화한 접근이 에러 안나고 좋음
                         if sqrt(S):
                             answer = max(answer, int(S))
                         
