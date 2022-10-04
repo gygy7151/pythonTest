@@ -7,7 +7,7 @@
 '''
 def solution():
     n = int(input())
-    tree = [[] for _ in range(n)]
+    tree = [0 for _ in range(n)]
     p = list(map(int, input().split()))
     for i in range(n):
         tree[i] = p[i]
