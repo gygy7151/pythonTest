@@ -5,9 +5,8 @@
 두번째풀이
 '''
 
-
 '''
-첫번째풀이- 틀림
+첫번째풀이- 해결
 '''
 import sys
 input = sys.stdin.readline
