@@ -2,6 +2,51 @@
 스타트와 링크 
 '''
 '''
+네번째풀이 - 아..능력치에서 N//2개를 뽑는 이상한 실수를 저지름
+'''
+from itertools import combinations
+
+def solution():
+    N = int(input())
+    S = [list(map(int, input().split())) for _ in range(N)]
+    # 스타트 팀과 링크팀의 능력치 차이 최솟값 px_difference 
+    min_px_diff = int(1e9)
+
+    def find_left_player(player):
+        number = [ x for x in range(0, N)]
+
+        for start_player in player:
+            number.remove(start_player)
+        
+        return number
+
+    for start in list(combinations(range(0,N), N//2)):        
+        # 스타트 팀과 링크팀의 능력치 start_px, link_px
+        start_px, link_px = 0,0 
+
+        for link_plyers in list(combinations(find_left_player(start), 2)):
+            i, j = link_plyers
+            start_px += S[i][j] + S[j][i]
+
+        for start_plyers in list(combinations(start, 2)):
+            i, j = start_plyers
+            link_px += S[i][j] + S[j][i]
+        
+        min_px_diff = min(min_px_diff, abs(start_px - link_px))
+    
+    print(min_px_diff)
+solution()
+        
+
+            
+
+        
+
+    
+
+
+
+'''
 세번째 접근 - 조합의 특징을 활용함
 '''
 # from itertools import combinations #조합 함수
@@ -62,25 +107,25 @@
 # 	min_value = min(min_value, abs(stat_A-stat_B))
 # print(min_value)
 
-from itertools import combinations
-N = int(input())
-members = [x for x in range(N)]
-S = list(combinations(members, int(N/2)))
-for i in range(N):
-    members[i] = list(map(int, input().split()))
-min_diff = int(1e9)
-for member_a in S:
-    point_a = 0
-    point_b = 0
-    for x in member_a:
-        for y in member_a:
-            point_a += members[x][y]
-    member_b = [x for x in range(N) if x not in member_a]
-    for x in member_b:
-        for y in member_b:
-            point_b += members[x][y]
-    min_diff = min(min_diff, abs(point_a - point_b))
-print(min_diff)
+# from itertools import combinations
+# N = int(input())
+# members = [x for x in range(N)]
+# S = list(combinations(members, int(N/2)))
+# for i in range(N):
+#     members[i] = list(map(int, input().split()))
+# min_diff = int(1e9)
+# for member_a in S:
+#     point_a = 0
+#     point_b = 0
+#     for x in member_a:
+#         for y in member_a:
+#             point_a += members[x][y]
+#     member_b = [x for x in range(N) if x not in member_a]
+#     for x in member_b:
+#         for y in member_b:
+#             point_b += members[x][y]
+#     min_diff = min(min_diff, abs(point_a - point_b))
+# print(min_diff)
 
 
 '''
