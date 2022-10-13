@@ -54,6 +54,10 @@ def solution():
         
         # 후보군을 점차 줄이는 기법이라고 보면됨
         for i in range(x, H+1):
+            if x == i:
+                k = y
+            else:
+                k = 0
             
             for j in range(k,N):
 
