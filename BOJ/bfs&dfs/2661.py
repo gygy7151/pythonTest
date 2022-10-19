@@ -24,6 +24,7 @@ def solution():
         return True
     
     def dfs(arr):
+        #if문 여러개보다 그냥 우선 dfs에 넣어주고 초기에 체크해주는게 효율적
         if check(arr) is False:
             return
         if len(arr) == N:

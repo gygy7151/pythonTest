@@ -2,6 +2,27 @@
 블랙잭
 '''
 '''
+세번째풀이
+'''
+from itertools import combinations
+
+def solution():
+    N, M = map(int, input().split())
+    cards = list(map(int, input().split()))
+    answer = -1
+    
+    for card_set in list(combinations(cards, 3)):
+        sum_val = sum(card_set)
+        if sum_val > answer and sum_val <= M:
+            answer = sum_val
+
+    print(answer)
+
+solution()
+
+
+
+'''
 두번째풀이 
 - 더 간단하게 if조건문 누락한것도 해결. 
 - 메모리는 첫번째풀이와 동일함
