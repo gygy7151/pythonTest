@@ -9,30 +9,67 @@ Cubeditor 부분문자열이 두번이상 중복되는것 중 젤 긴거 찾는 
 이런 문자열 중 가장 길이가 긴 것을 구하는 프로그램을 작성하시오
 부분 문자열은 한개에서부터 절반까지길이임
 '''
+# def solution():
+#     s = input()
+
+#     def check(pattern):
+#         length = len(pattern)
+#         table = [0] * len(pattern)
+#         j = 0
+#         for i in range(1, length):
+#             while j > 0 and pattern[i] != pattern[j]:
+#                 j = table[j - 1]
+            
+#             if pattern[i] == pattern[j]:
+#                 j += 1
+#                 table[i] = j
+        
+#         return max(table)
+
+#     result = 0
+
+#     for idx in range(len(s)):
+#         sub_str = s[idx:len(s)]
+#         result = max(result, check(sub_str))
+    
+#     print(result)
+# solution()
+
+'''
+첫번째풀이
+'''
 def solution():
     s = input()
 
-    def check(pattern):
-        length = len(pattern)
-        table = [0] * len(pattern)
+    def make_table(p):
+        length = len(p)
         j = 0
+        table = [0] * length
+
+        # table 범위는 1부터 길이 length까지임
         for i in range(1, length):
-            while j > 0 and pattern[i] != pattern[j]:
-                j = table[j - 1]
+            while j > 0 and p[i] != p[j]:
+                j = table[j-1]
             
-            if pattern[i] == pattern[j]:
+            #오타 주의..
+            if p[i] == p[j]:
                 j += 1
                 table[i] = j
+
         
         return max(table)
-
-    result = 0
-
-    for idx in range(len(s)):
-        sub_str = s[idx:len(s)]
-        result = max(result, check(sub_str))
     
-    print(result)
+    answer = 0
+    for i in range(len(s)):
+        sub_str = s[i:len(s)]
+        answer = max(answer, make_table(sub_str))
+    
+    print(answer)
 solution()
+        
+
+        
+
+
 
 
