@@ -2,6 +2,11 @@
 알파벳
 '''
 '''
+여섯번째풀이
+'''
+# https://my-coding-notes.tistory.com/260 여기 참조
+
+'''
 다섯번/여섯번째풀이
 '''
 import sys
