@@ -2,7 +2,7 @@
 이동하기
 '''
 '''
-첫번째풀이
+첫번/세번째풀이 -  이건 꼭 다시 답 봐야된다
 '''
 def solution():
     N, M = map(int, input().split())
