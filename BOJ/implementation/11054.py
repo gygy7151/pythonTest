@@ -2,6 +2,11 @@
 가장 긴 바이토닉 부분 수열
 '''
 '''
+두번째풀이 - 세그먼트 트리활용 O(NlogN)
+참고자료: https://www.crocus.co.kr/670?category=159837
+'''
+
+'''
 첫번째풀이- dp활용
 참고자료 : https://www.youtube.com/watch?v=sYh62pujaH8
 '''
