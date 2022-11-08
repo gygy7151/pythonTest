@@ -3,6 +3,7 @@
 '''
 '''
 첫번째풀이
+참고풀이출처 : https://hooongs.tistory.com/178
 '''
 import sys
 N = int(input())
